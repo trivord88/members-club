@@ -98,7 +98,7 @@ func main() {
 	})
 	os.Getenv("PORT")
 	fmt.Println("Listening on port: 80")
-	err = http.ListenAndServe(fmt.Sprintf(":%v", port), nil)
+	err = http.ListenAndServe(fmt.Sprintf(":%v", PORT), nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
