@@ -7,7 +7,7 @@ Latest release has been deployed to Heroku: https://members-club-test-app.heroku
 * Be advised, frontend is not my strong suit, so better don't peek in
 * Haven't realised how to pass errors from backend to smth like `alert()`, any try resulted in template crash
 
-##How to run app frow scratch
+## How to run app frow scratch
 ``git clone -b dev git@github.com:trivord88/members-club.git`` <br>
 ``cd members-club`` <br>
 ``go run membersClub.go`` <br>
