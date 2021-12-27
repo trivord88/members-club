@@ -1,4 +1,4 @@
-package membersClub
+package main
 
 import (
 	"fmt"
