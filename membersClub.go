@@ -93,8 +93,8 @@ func main() {
 			log.Println(fmt.Sprintf("%q", "Unsupported request type"))
 		}
 	})
-	fmt.Println("Listening on port: 80")
-	err = http.ListenAndServe(":80", nil)
+	fmt.Println("Listening for events")
+	err = http.ListenAndServe(":0", nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
