@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style type="text/css">
+    table {
+      border-collapse: collapse;
+    }
+    table th,
+    table td {
+      padding: 0 3px;
+    }
+    table.brd th,
+    table.brd td {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+<div
+        style="
+      display: flex;
+      justify-content: center;
+      margin: 2rem;
+      font-weight: bold;
+      font-size: 2rem;
+    "
+>
+  Welcome to the club!
+</div>
+<div style="display: flex; flex-direction: column; width: 10.6rem">
+  <div style="font-weight: bold; font-size: 1.3rem; margin-bottom: 5px">
+    New member
+  </div>
+  <form method="POST">
+    <label>Subject:</label><br />
+    <input type="text" name="Name"><br />
+    <label>Email:</label><br />
+    <input type="text" name="Email"><br />
+    <input type="submit">
+  </form>
+</div>
+<div style="display: flex; justify-content: center; font-weight: bold; font-size: 1.3rem; margin-top: 2rem;">
+  Members
+</div>
+<div style="display: flex; justify-content: space-around; margin-top: 15px">
+  <table class="brd">
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Registration date</th>
+    </tr>
+    {{ range $i, $e := . }}
+    {{ $i := inc $i }}
+    <tr>
+      <td>{{ $i }}</td>
+      <td>{{ .Name }}</td>
+      <td>{{ .Email }}</td>
+      <td>{{ .Date }}</td>
+    </tr>
+    {{ end }}
+  </table>
+</div>
+</body>
+</html>

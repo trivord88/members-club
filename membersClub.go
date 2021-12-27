@@ -17,7 +17,6 @@ type Members struct {
 	Date  string
 }
 
-var static string = "<!DOCTYPE html>\n<html>\n<head>\n    <style type=\"text/css\">\n        table {\n            border-collapse: collapse;\n        }\n        table th,\n        table td {\n            padding: 0 3px;\n        }\n        table.brd th,\n        table.brd td {\n            border: 1px solid #000;\n        }\n    </style>\n</head>\n<body>\n<div\n        style=\"\n      display: flex;\n      justify-content: center;\n      margin: 2rem;\n      font-weight: bold;\n      font-size: 2rem;\n    \"\n>\n    Welcome to the club!\n</div>\n<div style=\"display: flex; flex-direction: column; width: 10.6rem\">\n    <div style=\"font-weight: bold; font-size: 1.3rem; margin-bottom: 5px\">\n        New member\n    </div>\n    <form method=\"POST\">\n        <label>Subject:</label><br />\n        <input type=\"text\" name=\"Name\"><br />\n        <label>Email:</label><br />\n        <input type=\"text\" name=\"Email\"><br />\n        <input type=\"submit\">\n    </form>\n</div>\n<div style=\"display: flex; justify-content: center; font-weight: bold; font-size: 1.3rem; margin-top: 2rem;\">\n    Members\n</div>\n<div style=\"display: flex; justify-content: space-around; margin-top: 15px\">\n    <table class=\"brd\">\n        <tr>\n            <th>#</th>\n            <th>Name</th>\n            <th>Email</th>\n            <th>Registration date</th>\n        </tr>\n        {{ range $i, $e := . }}\n        {{ $i := inc $i }}\n            <tr>\n            <td>{{ $i }}</td>\n            <td>{{ .Name }}</td>\n            <td>{{ .Email }}</td>\n            <td>{{ .Date }}</td>\n            </tr>\n        {{ end }}\n    </table>\n</div>\n</body>\n</html>\n"
 var membersList []Members
 
 func validateEmail(Email string) bool {
@@ -61,7 +60,7 @@ func main() {
 			return i + 1
 		},
 	}
-	tmpl, err := template.New("forms.html").Funcs(funcMap).Parse(static)
+	tmpl, err := template.New("forms.html").Funcs(funcMap).ParseFiles("forms.html")
 	if err != nil {
 		log.Fatal("Template: ", err)
 	}
