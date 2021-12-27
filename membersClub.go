@@ -55,8 +55,6 @@ func logger(req *http.Request) {
 
 var notUniqueFlag bool = false
 
-var PORT int
-
 func main() {
 	funcMap := template.FuncMap{
 		"inc": func(i int) int {
@@ -96,11 +94,12 @@ func main() {
 			log.Println(fmt.Sprintf("%q", "Unsupported request type"))
 		}
 	})
+	PORT := os.Getenv("PORT")
 	if os.Getenv("PORT") == "" {
-		PORT = 80
+		PORT = "80"
 	}
-	fmt.Println("Listening on port: ", PORT)
-	err = http.ListenAndServe(fmt.Sprintf(":%v", PORT), nil)
+	fmt.Println("Listening on port: " + PORT)
+	err = http.ListenAndServe(":"+PORT, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
