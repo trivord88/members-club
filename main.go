@@ -60,7 +60,6 @@ func main() {
 			return i + 1
 		},
 	}
-	//tmpl := template.Must(template.ParseFiles("forms.html"))
 	tmpl, err := template.New("forms.html").Funcs(funcMap).ParseFiles("forms.html")
 	if err != nil {
 		log.Fatal("Template: ", err)
