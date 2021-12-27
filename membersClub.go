@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/http/httputil"
 	"net/mail"
+	"os"
 	"regexp"
 	"time"
 )
@@ -54,6 +55,8 @@ func logger(req *http.Request) {
 
 var notUniqueFlag bool = false
 
+var port int = 80
+
 func main() {
 	funcMap := template.FuncMap{
 		"inc": func(i int) int {
@@ -93,8 +96,9 @@ func main() {
 			log.Println(fmt.Sprintf("%q", "Unsupported request type"))
 		}
 	})
-	fmt.Println("Listening for events")
-	err = http.ListenAndServe(":0", nil)
+	os.Getenv("PORT")
+	fmt.Println("Listening on port: 80")
+	err = http.ListenAndServe(fmt.Sprintf(":%v", port), nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
