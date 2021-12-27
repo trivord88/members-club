@@ -55,7 +55,7 @@ func logger(req *http.Request) {
 
 var notUniqueFlag bool = false
 
-var port int = 80
+var PORT int = 80
 
 func main() {
 	funcMap := template.FuncMap{
